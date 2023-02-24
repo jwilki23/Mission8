@@ -21,6 +21,19 @@ namespace Mission8.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Quadrant",
+                columns: table => new
+                {
+                    QuadrantId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    QuadrantName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Quadrant", x => x.QuadrantId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Responses",
                 columns: table => new
                 {
@@ -29,7 +42,7 @@ namespace Mission8.Migrations
                     CategoryId = table.Column<int>(nullable: false),
                     Task = table.Column<string>(nullable: false),
                     DueDate = table.Column<DateTime>(nullable: false),
-                    Quadrant = table.Column<int>(nullable: false),
+                    QuadrantId = table.Column<int>(nullable: false),
                     Completed = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
@@ -40,6 +53,12 @@ namespace Mission8.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "CategoryId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Responses_Quadrant_QuadrantId",
+                        column: x => x.QuadrantId,
+                        principalTable: "Quadrant",
+                        principalColumn: "QuadrantId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -64,24 +83,49 @@ namespace Mission8.Migrations
                 values: new object[] { 4, "Church" });
 
             migrationBuilder.InsertData(
-                table: "Responses",
-                columns: new[] { "TaskId", "CategoryId", "Completed", "DueDate", "Quadrant", "Task" },
-                values: new object[] { 3, 1, false, new DateTime(2023, 2, 27, 6, 0, 0, 0, DateTimeKind.Unspecified), 4, "Do my laundry" });
+                table: "Quadrant",
+                columns: new[] { "QuadrantId", "QuadrantName" },
+                values: new object[] { 1, "Important / Urgent" });
+
+            migrationBuilder.InsertData(
+                table: "Quadrant",
+                columns: new[] { "QuadrantId", "QuadrantName" },
+                values: new object[] { 2, "Important / Not Urgent" });
+
+            migrationBuilder.InsertData(
+                table: "Quadrant",
+                columns: new[] { "QuadrantId", "QuadrantName" },
+                values: new object[] { 3, "Not Important / Urgent" });
+
+            migrationBuilder.InsertData(
+                table: "Quadrant",
+                columns: new[] { "QuadrantId", "QuadrantName" },
+                values: new object[] { 4, "Not Important / Not Urgent" });
 
             migrationBuilder.InsertData(
                 table: "Responses",
-                columns: new[] { "TaskId", "CategoryId", "Completed", "DueDate", "Quadrant", "Task" },
+                columns: new[] { "TaskId", "CategoryId", "Completed", "DueDate", "QuadrantId", "Task" },
                 values: new object[] { 1, 2, false, new DateTime(2023, 2, 24, 11, 59, 59, 0, DateTimeKind.Unspecified), 1, "Mission #8 Project" });
 
             migrationBuilder.InsertData(
                 table: "Responses",
-                columns: new[] { "TaskId", "CategoryId", "Completed", "DueDate", "Quadrant", "Task" },
+                columns: new[] { "TaskId", "CategoryId", "Completed", "DueDate", "QuadrantId", "Task" },
                 values: new object[] { 2, 4, false, new DateTime(2023, 2, 26, 11, 30, 0, 0, DateTimeKind.Unspecified), 2, "Write a talk" });
+
+            migrationBuilder.InsertData(
+                table: "Responses",
+                columns: new[] { "TaskId", "CategoryId", "Completed", "DueDate", "QuadrantId", "Task" },
+                values: new object[] { 3, 1, false, new DateTime(2023, 2, 27, 6, 0, 0, 0, DateTimeKind.Unspecified), 4, "Do my laundry" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Responses_CategoryId",
                 table: "Responses",
                 column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Responses_QuadrantId",
+                table: "Responses",
+                column: "QuadrantId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -91,6 +135,9 @@ namespace Mission8.Migrations
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "Quadrant");
         }
     }
 }

@@ -18,7 +18,8 @@ namespace Mission8.Models
         public string Task { get; set; }
         public DateTime DueDate { get; set; }
         [Required(ErrorMessage = "Quadrant required")]
-        public int Quadrant { get; set; }
+        public int QuadrantId { get; set; }
+        public Quadrant Quadrant { get; set; }
         public bool Completed { get; set; }
     }
 }
