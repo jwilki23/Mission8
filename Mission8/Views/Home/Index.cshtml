@@ -1,9 +1,45 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<style>
+    .vertical-text {
+        transform: rotate(90deg);
+        white-space: nowrap;
+    }
 
+<<<<<<< HEAD
 
     <h1>
         This is just a test to see if this is working correctly.
     </h1>
     <p> I really hope it does.</p>
+=======
+    .vertical-text > span {
+        transform: rotate(-90deg);
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-5">
+            <h2>Urgent</h2>
+        </div>
+        <div class="col-5">
+            <h2>Not Urgent</h2>
+        </div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-2 vertical-text"  ><h2>Important</h2></div>
+        <div class="col-5"><h3>Quadrant 1</h3></div>
+        <div class="col-5"><h3>Quadrant 2</h3></div>
+    </div>
+    <div class="row">
+        <div class="col-2 vertical-text"><h2>Not Important</h2></div>
+        <div class="col-5"><h3>Quadrant 3</h3></div>
+        <div class="col-5"><h3>Quadrant 4</h3></div>
+    </div>
+</div>
+>>>>>>> ec9fbdff1f6d7a634a3447865a71ef7601850e0e
