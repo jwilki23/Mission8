@@ -27,6 +27,13 @@ namespace Mission8.Models
                     new Category { CategoryId = 4, CategoryName = "Church" }
             );
 
+            mb.Entity<Quadrant>().HasData(
+                    new Quadrant { QuadrantId = 1, QuadrantName = "Important / Urgent" },
+                    new Quadrant { QuadrantId = 2, QuadrantName = "Important / Not Urgent" },
+                    new Quadrant { QuadrantId = 3, QuadrantName = "Not Important / Urgent" },
+                    new Quadrant { QuadrantId = 4, QuadrantName = "Not Important / Not Urgent" }
+            );
+
             //seeds the database with base entries
             mb.Entity<TaskResponse>().HasData(
 
@@ -36,7 +43,7 @@ namespace Mission8.Models
                     CategoryId = 2,
                     Task = "Mission #8 Project",
                     DueDate = new DateTime(2023, 2, 24, 11, 59, 59),
-                    Quadrant = 1,
+                    QuadrantId = 1,
                     Completed = false
                 },
                    new TaskResponse
@@ -45,7 +52,7 @@ namespace Mission8.Models
                        CategoryId = 4,
                        Task = "Write a talk",
                        DueDate = new DateTime(2023, 2, 26, 11, 30, 00),
-                       Quadrant = 2,
+                       QuadrantId = 2,
                        Completed = false
                    },
                       new TaskResponse
@@ -54,7 +61,7 @@ namespace Mission8.Models
                           CategoryId = 1,
                           Task = "Do my laundry",
                           DueDate = new DateTime(2023, 2, 27, 6, 00, 00),
-                          Quadrant = 4,
+                          QuadrantId = 4,
                           Completed = false
                       }
             );

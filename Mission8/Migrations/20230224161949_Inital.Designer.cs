@@ -9,7 +9,7 @@ using Mission8.Models;
 namespace Mission8.Migrations
 {
     [DbContext(typeof(AddTaskContext))]
-    [Migration("20230224081409_Inital")]
+    [Migration("20230224161949_Inital")]
     partial class Inital
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,6 +54,42 @@ namespace Mission8.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Mission8.Models.Quadrant", b =>
+                {
+                    b.Property<int>("QuadrantId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("QuadrantName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("QuadrantId");
+
+                    b.ToTable("Quadrant");
+
+                    b.HasData(
+                        new
+                        {
+                            QuadrantId = 1,
+                            QuadrantName = "Important / Urgent"
+                        },
+                        new
+                        {
+                            QuadrantId = 2,
+                            QuadrantName = "Important / Not Urgent"
+                        },
+                        new
+                        {
+                            QuadrantId = 3,
+                            QuadrantName = "Not Important / Urgent"
+                        },
+                        new
+                        {
+                            QuadrantId = 4,
+                            QuadrantName = "Not Important / Not Urgent"
+                        });
+                });
+
             modelBuilder.Entity("Mission8.Models.TaskResponse", b =>
                 {
                     b.Property<int>("TaskId")
@@ -69,7 +105,7 @@ namespace Mission8.Migrations
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Quadrant")
+                    b.Property<int>("QuadrantId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Task")
@@ -80,6 +116,8 @@ namespace Mission8.Migrations
 
                     b.HasIndex("CategoryId");
 
+                    b.HasIndex("QuadrantId");
+
                     b.ToTable("Responses");
 
                     b.HasData(
@@ -89,7 +127,7 @@ namespace Mission8.Migrations
                             CategoryId = 2,
                             Completed = false,
                             DueDate = new DateTime(2023, 2, 24, 11, 59, 59, 0, DateTimeKind.Unspecified),
-                            Quadrant = 1,
+                            QuadrantId = 1,
                             Task = "Mission #8 Project"
                         },
                         new
@@ -98,7 +136,7 @@ namespace Mission8.Migrations
                             CategoryId = 4,
                             Completed = false,
                             DueDate = new DateTime(2023, 2, 26, 11, 30, 0, 0, DateTimeKind.Unspecified),
-                            Quadrant = 2,
+                            QuadrantId = 2,
                             Task = "Write a talk"
                         },
                         new
@@ -107,7 +145,7 @@ namespace Mission8.Migrations
                             CategoryId = 1,
                             Completed = false,
                             DueDate = new DateTime(2023, 2, 27, 6, 0, 0, 0, DateTimeKind.Unspecified),
-                            Quadrant = 4,
+                            QuadrantId = 4,
                             Task = "Do my laundry"
                         });
                 });
@@ -117,6 +155,12 @@ namespace Mission8.Migrations
                     b.HasOne("Mission8.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Mission8.Models.Quadrant", "Quadrant")
+                        .WithMany()
+                        .HasForeignKey("QuadrantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
