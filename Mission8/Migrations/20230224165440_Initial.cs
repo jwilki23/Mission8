@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Mission8.Migrations
 {
-    public partial class Inital : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -21,7 +21,7 @@ namespace Mission8.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Quadrant",
+                name: "Quadrants",
                 columns: table => new
                 {
                     QuadrantId = table.Column<int>(nullable: false)
@@ -30,7 +30,7 @@ namespace Mission8.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Quadrant", x => x.QuadrantId);
+                    table.PrimaryKey("PK_Quadrants", x => x.QuadrantId);
                 });
 
             migrationBuilder.CreateTable(
@@ -55,9 +55,9 @@ namespace Mission8.Migrations
                         principalColumn: "CategoryId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Responses_Quadrant_QuadrantId",
+                        name: "FK_Responses_Quadrants_QuadrantId",
                         column: x => x.QuadrantId,
-                        principalTable: "Quadrant",
+                        principalTable: "Quadrants",
                         principalColumn: "QuadrantId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -83,22 +83,22 @@ namespace Mission8.Migrations
                 values: new object[] { 4, "Church" });
 
             migrationBuilder.InsertData(
-                table: "Quadrant",
+                table: "Quadrants",
                 columns: new[] { "QuadrantId", "QuadrantName" },
                 values: new object[] { 1, "Important / Urgent" });
 
             migrationBuilder.InsertData(
-                table: "Quadrant",
+                table: "Quadrants",
                 columns: new[] { "QuadrantId", "QuadrantName" },
                 values: new object[] { 2, "Important / Not Urgent" });
 
             migrationBuilder.InsertData(
-                table: "Quadrant",
+                table: "Quadrants",
                 columns: new[] { "QuadrantId", "QuadrantName" },
                 values: new object[] { 3, "Not Important / Urgent" });
 
             migrationBuilder.InsertData(
-                table: "Quadrant",
+                table: "Quadrants",
                 columns: new[] { "QuadrantId", "QuadrantName" },
                 values: new object[] { 4, "Not Important / Not Urgent" });
 
@@ -137,7 +137,7 @@ namespace Mission8.Migrations
                 name: "Categories");
 
             migrationBuilder.DropTable(
-                name: "Quadrant");
+                name: "Quadrants");
         }
     }
 }

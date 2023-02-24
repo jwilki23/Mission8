@@ -16,6 +16,7 @@ namespace Mission8.Models
 
         public DbSet<TaskResponse> Responses { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Quadrant> Quadrants { get; set; }
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
