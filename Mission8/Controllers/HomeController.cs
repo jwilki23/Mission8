@@ -106,5 +106,6 @@ namespace Mission8.Controllers
             //redirects back to collection view
             return RedirectToAction("Tasks");
         }
+
     }
 }
