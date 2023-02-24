@@ -63,7 +63,7 @@ namespace Mission8.Migrations
 
                     b.HasKey("QuadrantId");
 
-                    b.ToTable("Quadrant");
+                    b.ToTable("Quadrants");
 
                     b.HasData(
                         new

@@ -9,8 +9,8 @@ using Mission8.Models;
 namespace Mission8.Migrations
 {
     [DbContext(typeof(AddTaskContext))]
-    [Migration("20230224161949_Inital")]
-    partial class Inital
+    [Migration("20230224164858_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -65,7 +65,7 @@ namespace Mission8.Migrations
 
                     b.HasKey("QuadrantId");
 
-                    b.ToTable("Quadrant");
+                    b.ToTable("Quadrants");
 
                     b.HasData(
                         new
