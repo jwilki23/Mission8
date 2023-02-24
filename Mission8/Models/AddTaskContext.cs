@@ -6,61 +6,60 @@ using System.Threading.Tasks;
 
 namespace Mission8.Models
 {
-    public class TaskInputContext : DbContext
+    public class AddTaskContext : DbContext
     {
         //Constructor
-        public TaskInputContext(DbContextOptions<TaskInputContext> options) : base(options)
+        public AddTaskContext(DbContextOptions<AddTaskContext> options) : base(options)
         {
             //Leave blank for now
         }
 
-        public DbSet<InputResponse> Responses { get; set; }
-        public DbSet<Quadrant> Quadrants { get; set; }
+        public DbSet<TaskResponse> Responses { get; set; }
+        public DbSet<Category> Category { get; set; }
 
 
         //Seed data
         protected override void OnModelCreating(ModelBuilder mb)
         {
-            mb.Entity<Quadrant>().HasData
+            mb.Entity<Category>().HasData
                 (
-                new Quadrant { QuadrantId = 1, QuadrantName = "Important / Urgent" },
-                new Quadrant { QuadrantId = 2, QuadrantName = "Important / Not Urgent" },
-                new Quadrant { QuadrantId = 3, QuadrantName = "Not Important / Urgent" },
-                new Quadrant { QuadrantId = 4, QuadrantName = "Not Important / Not Urgent" } 
+                new Category { CategoryId = 1, CategoryName = "Home" },
+                new Category { CategoryId = 2, CategoryName = "School" },
+                new Category { CategoryId = 3, CategoryName = "Work" },
+                new Category { CategoryId = 4, CategoryName = "Church" } 
                 );
 
+            mb.Entity<TaskResponse>().HasData(
 
-            mb.Entity<InputResponse>().HasData(
-
-                new InputResponse
+                new TaskResponse
                 {
                     InputId = 1,
                     Task = "",
                     DueDate = "",
-                    QuadrantId = 1,
-                    Category = "",
+                    Quadrant = 1,
+                    CategoryId = 1,
                     Completed = true,
                 },
 
            
 
-                new InputResponse
+                new TaskResponse
                 {
                     InputId = 1,
                     Task = "",
                     DueDate = "",
-                    QuadrantId = 1,
-                    Category = "",
+                    Quadrant = 1,
+                    CategoryId = 2,
                     Completed = true,
                 },
 
-                new InputResponse
+                new TaskResponse
                 {
                     InputId = 1,
                     Task = "",
                     DueDate = "",
-                    QuadrantId = 1,
-                    Category = "",
+                    Quadrant = 1,
+                    CategoryId = 2,
                     Completed = true,
                 }
 
@@ -72,7 +71,7 @@ namespace Mission8.Models
             throw new NotImplementedException();
         }
 
-        internal void Update(InputResponse re)
+        internal void Update(TaskResponse re)
         {
             throw new NotImplementedException();
         }

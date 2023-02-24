@@ -13,10 +13,10 @@ namespace Mission8.Controllers
     public class HomeController : Controller
     {
 
-        private TaskInputContext TaskContext { get; set; }
+        private AddTaskContext AddTaskContext { get; set; }
 
         //Constructor
-        public HomeController(TaskInputContext someName)
+        public HomeController(AddTaskContext someName)
         {
             TaskContext = someName;
         }
@@ -29,7 +29,7 @@ namespace Mission8.Controllers
 
         public IActionResult TaskList()
         {
-            var applications = TaskContext.Responses
+            var applications = AddTaskContext.Responses
                 .Include(x => x.Quadrant)
                 .OrderBy(x => x.Task)
                 .ToList();
@@ -39,18 +39,18 @@ namespace Mission8.Controllers
         [HttpGet]
         public IActionResult Edit(int inputid)
         {
-            ViewBag.Quadrants = TaskContext.Quadrants.ToList();
+            ViewBag.Quadrants = Models.AddTaskContext.Category.ToList();
 
-            var application = TaskContext.Responses.Single(x => x.InputId == inputid);
+            var application = Models.AddTaskContext.Responses.Single(x => x.InputId == inputid);
 
             return View("TaskForm", application);
         }
 
         [HttpPost]
-        public IActionResult Edit(InputResponse re)
+        public IActionResult Edit(TaskResponse re)
         {
-            TaskContext.Update(re);
-            TaskContext.SaveChanges();
+            Models.AddTaskContext.Update(re);
+            Models.AddTaskContext.SaveChanges();
 
             return RedirectToAction("TaskList");
         }
@@ -58,17 +58,17 @@ namespace Mission8.Controllers
         [HttpGet]
         public IActionResult Delete(int inputid)
         {
-            var application = TaskContext.Responses.Single(x => x.InputId == inputid);
+            var application = Models.AddTaskContext.Responses.Single(x => x.InputId == inputid);
 
             return View(application);
         }
 
         [HttpPost]
-        public IActionResult Delete(InputResponse ar)
+        public IActionResult Delete(TaskResponse ar)
         {
 
-            TaskContext.Responses.Remove(ar);
-            TaskContext.SaveChanges();
+            Models.AddTaskContext.Responses.Remove(ar);
+            Models.AddTaskContext.SaveChanges();
 
             return RedirectToAction("TaskList");
         }

@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Mission8.Models
 {
-    public class Quadrant
+    public class Category
     {
             [Key]
             [Required]
-            public int QuadrantId { get; set; }
-            public string QuadrantName { get; set; }
+            public int CategoryId { get; set; }
+            public string CategoryName { get; set; }
     }
 }

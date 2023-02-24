@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mission8.Models
 {
-    public class InputResponse
+    public class TaskResponse
     {
         [Key]
         [Required]
@@ -18,17 +18,17 @@ namespace Mission8.Models
         [Required(ErrorMessage = "Please, Enter due date.")]
         public DateTime DueDate { get; set; }
 
-        [Required(ErrorMessage = "Please, Enter Category.")]
-        public string Category { get; set; }
+        [Required(ErrorMessage = "Please, Enter quadrant.")]
+        public string Quadrant { get; set; }
 
         [Required]
         public bool Completed { get; set; }
 
         //Build Foreign Key Relationship
 
-        //Quadrant
-        [Required(ErrorMessage = "Please, select quadrant.")]
-        public int QuadrantId { get; set; }
-        public Quadrant Quadrant { get; set; }
+        //Category
+        [Required(ErrorMessage = "Please, select category.")]
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
     }
 }
