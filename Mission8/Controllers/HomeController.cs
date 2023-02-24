@@ -30,7 +30,7 @@ namespace Mission8.Controllers
             //pulls category data
             ViewBag.Categories = taskContext.Categories.ToList();
             //pulls Quadrant data
-            ViewBag.Quadrants = taskContext.Quadrant.ToList();
+            ViewBag.Quadrants = taskContext.Quadrants.ToList();
             return View();
         }
 
@@ -40,7 +40,7 @@ namespace Mission8.Controllers
         {
             ViewBag.Categories = taskContext.Categories.ToList();
             //pulls Quadrant data
-            ViewBag.Quadrants = taskContext.Quadrant.ToList();
+            ViewBag.Quadrants = taskContext.Quadrants.ToList();
             //method to add and save changes to entry if valid data is entered
             if (ModelState.IsValid)
             {
@@ -72,7 +72,7 @@ namespace Mission8.Controllers
             //pulls category data
             ViewBag.Categories = taskContext.Categories.ToList();
             //pulls Quadrant data
-            ViewBag.Quadrants = taskContext.Quadrant.ToList();
+            ViewBag.Quadrants = taskContext.Quadrants.ToList();
             //creates variable holding data for the specified entry
             var response = taskContext.Responses.Single(x => x.TaskId == taskid);
             //returns NewMovies view with data from specified entry
