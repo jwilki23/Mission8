@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Mission8.Models;
 using System;
@@ -11,11 +12,13 @@ namespace Mission8.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private TaskInputContext TaskContext { get; set; }
+
+        //Constructor
+        public HomeController(TaskInputContext someName)
         {
-            _logger = logger;
+            TaskContext = someName;
         }
 
         public IActionResult Index()
@@ -23,15 +26,52 @@ namespace Mission8.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+
+        public IActionResult TaskList()
         {
-            return View();
+            var applications = TaskContext.Responses
+                .Include(x => x.Quadrant)
+                .OrderBy(x => x.Task)
+                .ToList();
+            return View(applications);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpGet]
+        public IActionResult Edit(int inputid)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            ViewBag.Quadrants = TaskContext.Quadrants.ToList();
+
+            var application = TaskContext.Responses.Single(x => x.InputId == inputid);
+
+            return View("TaskForm", application);
         }
+
+        [HttpPost]
+        public IActionResult Edit(InputResponse re)
+        {
+            TaskContext.Update(re);
+            TaskContext.SaveChanges();
+
+            return RedirectToAction("TaskList");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int inputid)
+        {
+            var application = TaskContext.Responses.Single(x => x.InputId == inputid);
+
+            return View(application);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(InputResponse ar)
+        {
+
+            TaskContext.Responses.Remove(ar);
+            TaskContext.SaveChanges();
+
+            return RedirectToAction("TaskList");
+        }
+
     }
 }
