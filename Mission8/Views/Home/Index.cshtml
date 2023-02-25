@@ -1,37 +1,89 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+
 <style>
-    .vertical-text {
-        transform: rotate(90deg);
-        white-space: nowrap;
+    /* Style for the matrix container */
+    .matrix-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
     }
 
-    .vertical-text > span {
-        transform: rotate(-90deg);
+    /* Style for each quadrant */
+    .quadrant {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: 50%;
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Style for the cell colors */
+    .quadrant-1 {
+        background-color: #fcf8e3;
+    }
+
+    .quadrant-2 {
+        background-color: #dff0d8;
+    }
+
+    .quadrant-3 {
+        background-color: #f2dede;
+    }
+
+    .quadrant-4 {
+        background-color: #d9edf7;
+    }
+
+    /* Style for the text inside each quadrant */
+    .quadrant-text {
+        font-size: 24px;
+        font-weight: bold;
     }
 </style>
 
-<div class="container">
-    <div class="row">
-        <div class="col-2">
-        </div>
-        <div class="col-5">
-            <h2>Urgent</h2>
-        </div>
-        <div class="col-5">
-            <h2>Not Urgent</h2>
-        </div>
+<div class="matrix-container">
+    <div class="quadrant quadrant-1">
+        <div class="quadrant-text">Do First</div>
     </div>
-    <br /><br />
-    <div class="row">
-        <div class="col-2 vertical-text"  ><h2>Important</h2></div>
-        <div class="col-5"><h3>Quadrant 1</h3></div>
-        <div class="col-5"><h3>Quadrant 2</h3></div>
+    <div class="quadrant quadrant-2">
+        <div class="quadrant-text">Schedule</div>
     </div>
-    <div class="row">
-        <div class="col-2 vertical-text"><h2>Not Important</h2></div>
-        <div class="col-5"><h3>Quadrant 3</h3></div>
-        <div class="col-5"><h3>Quadrant 4</h3></div>
+    <div class="quadrant quadrant-3">
+        <div class="quadrant-text">Delegate</div>
+    </div>
+    <div class="quadrant quadrant-4">
+        <div class="quadrant-text">Eliminate</div>
+    </div>
+    <div class="quadrant quadrant-1">
+        <div class="quadrant-text">Crisis</div>
+    </div>
+    <div class="quadrant quadrant-2">
+        <div class="quadrant-text">Prevention, Planning, Improvement</div>
+    </div>
+    <div class="quadrant quadrant-3">
+        <div class="quadrant-text">Interruptions, Some Calls, Some Emails</div>
+    </div>
+    <div class="quadrant quadrant-4">
+        <div class="quadrant-text">Time Wasters</div>
+    </div>
+    <div class="quadrant quadrant-1">
+        <div class="quadrant-text">Pressing Problems</div>
+    </div>
+    <div class="quadrant quadrant-2">
+        <div class="quadrant-text">Relationship Building, Learning, Recognizing New Opportunities</div>
+    </div>
+    <div class="quadrant quadrant-3">
+        <div class="quadrant-text">Some Meetings, Some Calls, Some Emails</div>
+    </div>
+    <div class="quadrant quadrant-4">
+        <div class="quadrant-text">Escape Activities, Excessive TV, Social Media, Gaming</div>
     </div>
 </div>

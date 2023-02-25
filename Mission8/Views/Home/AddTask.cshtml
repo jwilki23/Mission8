@@ -205,10 +205,8 @@
         button:hover {
             background: #043e7d;
         }
-
-    media (min-width: 568px) {
-        .name-item, .city-item
-
+        
+    .name-item, .city-item
     {
         display: flex;
         flex-wrap: wrap;
@@ -227,7 +225,7 @@
             display: block;
             padding-bottom: 5px;
         }
-    }
+
 </style>
 
 <div style="margin: auto; width: 50%;">
@@ -242,24 +240,24 @@
             <p>Enter the information below for the movie you would like to add</p>
 
             <div class="item">
-                <p style="font-weight: bold" asp-for="CategoryID">Category<span>*</span></p>
+                <p style="font-weight: bold" asp-for="CategoryId">Category<span>*</span></p>
                 <select asp-for="Category">
-                    <option value="" disabled selected></option>
-                    @foreach (Category m in ViewBag.Categories)
+                    <option value="" disabled selected>Select a Caregory</option>
+                    @foreach (Category c in ViewBag.Categories)
                     {
-                        <option value="@m.CategoryId">@m.CategoryName</option>
+                        <option value="@c.CategoryId">@c.CategoryName</option>
                     }
                 </select>
             </div>
 
             <div class="item">
-                <p style="font-weight: bold" asp-for="Quadrant">Quadrant<span>*</span></p>
+                <p style="font-weight: bold" asp-for="Quadrant">Quadrant</p>
                 <select asp-for="Quadrant" required>
                     <option value="" disabled selected></option>
-                    @foreach (Quadrant m in ViewBag.Quadrants)
-                    {
-                        <option value="@m.QuadrantId">@m.QuadrantName</option>
-                    }
+                    <option value="Important / Urgent">Important / Urgent</option>
+                    <option value="Important / Not Urgent">Important / Not Urgent</option>
+                    <option value="Not Important / Urgent">Not Important / Urgent</option>
+                    <option value="Not Important / Not Urgent">Not Important / Not Urgent</option>
                 </select>
             </div>
 

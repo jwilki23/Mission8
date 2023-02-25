@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Delete Task";
+}
+
+@model TaskResponse
+
+<div class="container d-flex align-items-center justify-content-center vh-100">
+    <div class="text-center">
+        <h3 class="mb-3">Confirm Deletion</h3>
+        <h4 class="mb-4">Are you sure you want to delete the task ? </h4>
+
+        <form method="post" asp-controller="Home" asp-action="Delete">
+            <input type="hidden" asp-for="TaskId" />
+
+            <button type="submit" class="btn btn-danger mr-3">Delete</button>
+            <a asp-controller="Home" asp-action="TaskList" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+
