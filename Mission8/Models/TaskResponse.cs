@@ -8,7 +8,7 @@ namespace Mission8.Models
 {
     public class TaskResponse
     {
-        //makes submissionid the primary key
+        //makes TaskId the primary key
         [Key]
         [Required]
         public int TaskId { get; set; }

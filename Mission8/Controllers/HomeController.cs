@@ -46,6 +46,10 @@ namespace Mission8.Controllers
         [HttpPost]
         public IActionResult AddTask(TaskResponse tr)
         {
+            //Pulls Quadrant data
+            ViewBag.Quadrants = taskContext.Quadrants.ToList();
+            ViewBag.Categories = taskContext.Categories.ToList();
+
             //Add and save changes to entry if valid data is entered
             if (ModelState.IsValid)
             {
@@ -56,10 +60,7 @@ namespace Mission8.Controllers
             //Otherwise returns them back to the page they were on
             else
             {
-                //Pulls Quadrant data
-                ViewBag.Quadrants = taskContext.Quadrants.ToList();
-                ViewBag.Categories = taskContext.Categories.ToList();
-
+                
                 return View(tr);
             }
 
@@ -103,7 +104,7 @@ namespace Mission8.Controllers
             //otherwise returns them back to the page they were on
             else
             {
-                return View();
+                return View(blah);
             }
         }
         [HttpGet]
