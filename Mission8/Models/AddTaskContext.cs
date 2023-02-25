@@ -30,10 +30,10 @@ namespace Mission8.Models
             );
             //gives each quadrant of task an assigned id
             mb.Entity<Quadrant>().HasData(
-                    new Quadrant { QuadrantId = 1, QuadrantName = "1" },
-                    new Quadrant { QuadrantId = 2, QuadrantName = "2" },
-                    new Quadrant { QuadrantId = 3, QuadrantName = "3" },
-                    new Quadrant { QuadrantId = 4, QuadrantName = "4" }
+                    new Quadrant { QuadrantId = 1, QuadrantName = "Important/Urgent" },
+                    new Quadrant { QuadrantId = 2, QuadrantName = "Important/Not Urgent" },
+                    new Quadrant { QuadrantId = 3, QuadrantName = "Not Important/Urgent" },
+                    new Quadrant { QuadrantId = 4, QuadrantName = "Not Important/Not Urgent" }
             );
 
             //seeds the database with base entries
