@@ -9,11 +9,7 @@ using Mission8.Models;
 namespace Mission8.Migrations
 {
     [DbContext(typeof(AddTaskContext))]
-<<<<<<< HEAD:Mission8/Migrations/20230224165440_Initial.Designer.cs
     [Migration("20230224165440_Initial")]
-=======
-    [Migration("20230224164858_Initial")]
->>>>>>> ec9fbdff1f6d7a634a3447865a71ef7601850e0e:Mission8/Migrations/20230224164858_Initial.Designer.cs
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
