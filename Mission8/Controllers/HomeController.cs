@@ -55,7 +55,7 @@ namespace Mission8.Controllers
             {
                 taskContext.Add(tr);
                 taskContext.SaveChanges();
-                return View("AddTask", tr);
+                return View("Tasks", tr);
             }
             //Otherwise returns them back to the page they were on
             else

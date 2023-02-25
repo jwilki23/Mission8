@@ -240,13 +240,8 @@
             <p>Enter the information below for the task you would like to add</p>
 
             <div class="item">
-<<<<<<< HEAD
                 <label style="font-weight: bold" asp-for="CategoryId">Category<span>*</span></label>
-                <select asp-for="Category">
-=======
-                <p style="font-weight: bold" asp-for="CategoryId">Category<span>*</span></p>
                 <select asp-for="CategoryId">
->>>>>>> c6dad91aa1a51bfcbac64676436d1a838dc96ea7
                     <option value="" disabled selected>Select a Category</option>
                     @foreach (Category c in ViewBag.Categories)
                     {
@@ -256,23 +251,13 @@
             </div>
 
             <div class="item">
-<<<<<<< HEAD
                 <label style="font-weight: bold" asp-for="Quadrant">Quadrant</label>
-                <select asp-for="Quadrant">
+                <select asp-for="QuadrantId">
                     <option value="" disabled selected></option>
                     <option value=1>Important / Urgent</option>
                     <option value=2>Important / Not Urgent</option>
                     <option value=3>Not Important / Urgent</option>
                     <option value=4>Not Important / Not Urgent</option>
-=======
-                <p style="font-weight: bold" asp-for="Quadrant">Quadrant</p>
-                <select asp-for="QuadrantId" required>
-                    <option value="" disabled selected></option>
-                    <option value="1">Important / Urgent</option>
-                    <option value="2">Important / Not Urgent</option>
-                    <option value="3">Not Important / Urgent</option>
-                    <option value="4">Not Important / Not Urgent</option>
->>>>>>> c6dad91aa1a51bfcbac64676436d1a838dc96ea7
                 </select>
             </div>
 
