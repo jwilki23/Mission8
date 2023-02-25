@@ -66,7 +66,6 @@ namespace Mission8.Controllers
 
         }
         
-
         public IActionResult Tasks()
         {
             var entries = taskContext.Responses
@@ -99,12 +98,12 @@ namespace Mission8.Controllers
             {
                 taskContext.Update(blah);
                 taskContext.SaveChanges();
-                return View("Index", blah);
+                return RedirectToAction("Tasks");
             }
             //otherwise returns them back to the page they were on
             else
             {
-                return View(blah);
+                return View();
             }
         }
         [HttpGet]
