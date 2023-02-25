@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
 namespace Mission8.Models
@@ -10,7 +10,7 @@ namespace Mission8.Models
     {
         [Key]
         [Required]
-        public int QuadrantId { get; set; }
+        public int QuardrantId { get; set; }
 
         public string QuadrantName { get; set; }
     }
