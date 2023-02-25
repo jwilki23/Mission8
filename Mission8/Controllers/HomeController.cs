@@ -55,7 +55,8 @@ namespace Mission8.Controllers
             {
                 taskContext.Add(tr);
                 taskContext.SaveChanges();
-                return View("Tasks", tr);
+                //return View("Tasks", tr);
+                return RedirectToAction("Tasks");
             }
             //Otherwise returns them back to the page they were on
             else
@@ -97,9 +98,9 @@ namespace Mission8.Controllers
             //method to add and save changes to entry if valid data is entered
             if (ModelState.IsValid)
             {
-                taskContext.Add(blah);
+                taskContext.Update(blah);
                 taskContext.SaveChanges();
-                return View("Tasks", blah);
+                return RedirectToAction("Tasks");
             }
             //otherwise returns them back to the page they were on
             else
