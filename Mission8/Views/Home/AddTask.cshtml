@@ -241,7 +241,7 @@
 
             <div class="item">
                 <p style="font-weight: bold" asp-for="CategoryId">Category<span>*</span></p>
-                <select asp-for="Category">
+                <select asp-for="CategoryId">
                     <option value="" disabled selected>Select a Category</option>
                     @foreach (Category c in ViewBag.Categories)
                     {
@@ -252,7 +252,7 @@
 
             <div class="item">
                 <p style="font-weight: bold" asp-for="Quadrant">Quadrant</p>
-                <select asp-for="Quadrant" required>
+                <select asp-for="QuadrantId" required>
                     <option value="" disabled selected></option>
                     <option value="1">Important / Urgent</option>
                     <option value="2">Important / Not Urgent</option>
@@ -268,8 +268,7 @@
 
             <div class="item">
                 <label for="DueDate" asp-for="DueDate">Due Date</label>
-                <input type="date" id="DueDate" asp-for="DueDate" name="trip-start"
-                       value="2023-01-01">
+                <input type="date" id="DueDate" asp-for="DueDate" name="trip-start">
             </div>
 
             <div class="item">
