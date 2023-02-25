@@ -23,7 +23,12 @@ namespace Mission8.Controllers
         //Method for when you click on index
         public IActionResult Index()
         {
-            return View();
+            var entries = taskContext.Responses
+                .Include(x => x.Category)
+                .Include(x => x.Quadrant)
+                .OrderBy(x => x.DueDate)
+                .ToList();
+            return View(entries);
         }
 
         //Method for when retrieving new entry page
