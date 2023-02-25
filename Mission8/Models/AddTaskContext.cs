@@ -16,15 +16,24 @@ namespace Mission8.Models
 
         public DbSet<TaskResponse> Responses { get; set; }
         public DbSet<Category> Categories { get; set; }
-
+        public DbSet<Quadrant> Quadrants { get; set; }
+            
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            
             //gives each category of task an assigned id
             mb.Entity<Category>().HasData(
                     new Category { CategoryId = 1, CategoryName = "Home" },
                     new Category { CategoryId = 2, CategoryName = "School" },
                     new Category { CategoryId = 3, CategoryName = "Work" },
                     new Category { CategoryId = 4, CategoryName = "Church" }
+            );
+            //gives each quadrant of task an assigned id
+            mb.Entity<Quadrant>().HasData(
+                    new Quadrant { QuadrantId = 1, QuadrantName = "1" },
+                    new Quadrant { QuadrantId = 2, QuadrantName = "2" },
+                    new Quadrant { QuadrantId = 3, QuadrantName = "3" },
+                    new Quadrant { QuadrantId = 4, QuadrantName = "4" }
             );
 
             //seeds the database with base entries

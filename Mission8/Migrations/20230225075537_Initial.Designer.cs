@@ -9,7 +9,7 @@ using Mission8.Models;
 namespace Mission8.Migrations
 {
     [DbContext(typeof(AddTaskContext))]
-    [Migration("20230224174340_Initial")]
+    [Migration("20230225075537_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -71,22 +71,22 @@ namespace Mission8.Migrations
                         new
                         {
                             QuadrantId = 1,
-                            QuadrantName = "Important / Urgent"
+                            QuadrantName = "1"
                         },
                         new
                         {
                             QuadrantId = 2,
-                            QuadrantName = "Important / Not Urgent"
+                            QuadrantName = "2"
                         },
                         new
                         {
                             QuadrantId = 3,
-                            QuadrantName = "Not Important / Urgent"
+                            QuadrantName = "3"
                         },
                         new
                         {
                             QuadrantId = 4,
-                            QuadrantName = "Not Important / Not Urgent"
+                            QuadrantName = "4"
                         });
                 });
 

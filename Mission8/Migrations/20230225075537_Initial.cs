@@ -85,22 +85,22 @@ namespace Mission8.Migrations
             migrationBuilder.InsertData(
                 table: "Quadrants",
                 columns: new[] { "QuadrantId", "QuadrantName" },
-                values: new object[] { 1, "Important / Urgent" });
+                values: new object[] { 1, "1" });
 
             migrationBuilder.InsertData(
                 table: "Quadrants",
                 columns: new[] { "QuadrantId", "QuadrantName" },
-                values: new object[] { 2, "Important / Not Urgent" });
+                values: new object[] { 2, "2" });
 
             migrationBuilder.InsertData(
                 table: "Quadrants",
                 columns: new[] { "QuadrantId", "QuadrantName" },
-                values: new object[] { 3, "Not Important / Urgent" });
+                values: new object[] { 3, "3" });
 
             migrationBuilder.InsertData(
                 table: "Quadrants",
                 columns: new[] { "QuadrantId", "QuadrantName" },
-                values: new object[] { 4, "Not Important / Not Urgent" });
+                values: new object[] { 4, "4" });
 
             migrationBuilder.InsertData(
                 table: "Responses",

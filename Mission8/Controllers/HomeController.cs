@@ -12,14 +12,12 @@ namespace Mission8.Controllers
 {
     public class HomeController : Controller
     {
-
         private AddTaskContext taskContext { get; set; }
 
         //Constructor
         public HomeController(AddTaskContext task)
         {
             taskContext = task;
-
         }
 
         //Method for when you click on index
@@ -32,6 +30,8 @@ namespace Mission8.Controllers
         [HttpGet]
         public IActionResult AddTask()
         {
+            //Pulls Quadrant data
+            ViewBag.Quadrants = taskContext.Quadrants.ToList();
             //Pulls category data
             ViewBag.Categories = taskContext.Categories.ToList();
             return View();
@@ -46,11 +46,13 @@ namespace Mission8.Controllers
             {
                 taskContext.Add(tr);
                 taskContext.SaveChanges();
-                return View("Confirmation", tr);
+                return View("AddTask", tr);
             }
             //Otherwise returns them back to the page they were on
             else
             {
+                //Pulls Quadrant data
+                ViewBag.Quadrants = taskContext.Quadrants.ToList();
                 ViewBag.Categories = taskContext.Categories.ToList();
 
                 return View(tr);
@@ -63,7 +65,8 @@ namespace Mission8.Controllers
         {
             var entries = taskContext.Responses
                 .Include(x => x.Category)
-                .OrderBy(x => x.Category)
+                .Include(x => x.Quadrant)
+                .OrderBy(x => x.DueDate)
                 .ToList();
             return View(entries);
         }
@@ -72,12 +75,14 @@ namespace Mission8.Controllers
         [HttpGet]
         public IActionResult Edit(int taskid)
         {
+            //Pulls Quadrant data
+            ViewBag.Quadrants = taskContext.Quadrants.ToList();
             //Pulls category data
             ViewBag.Categories = taskContext.Categories.ToList();
             //Creates variable holding data for the specified entry
-            var entry = taskContext.Responses.Single(x => x.TaskId == taskid);
+            var response = taskContext.Responses.Single(x => x.TaskId == taskid);
             //Returns NewMovies view with data from specified entry
-            return View("AddTask", entry);
+            return View("AddTask", response);
         }
         //Saves the edits to the database
         [HttpPost]

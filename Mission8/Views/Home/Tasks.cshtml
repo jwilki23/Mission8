@@ -10,10 +10,10 @@
 
         <thead class="thead-dark">
             <tr>
-                <th>Task</th>
-                <th>Due Date</th>
-                <th>Quadrant</th>
                 <th>Category</th>
+                <th>Task</th>
+                <th>DueDate</th>
+                <th>Quadrant</th>
                 <th>Completed</th>
 
             </tr>
@@ -22,17 +22,18 @@
         <tbody>
             @foreach (var x in Model)
             {
-<tr>
-    <td>@x.Task</td>
-    <td>@x.DueDate</td>
-    <td>@x.Quadrant.QuadrantName</td>
-    <td>@x.Category</td>
-    <td>@x.Completed</td>
+    <tr>
+        <td>@x.Category.CategoryName</td>
+        <td>@x.Task</td>
+        <td>@x.DueDate</td>
+        <td>@x.Quadrant.QuadrantName</td>
+        <td>@x.Completed</td>
 
 
-    <td><a class="btn btn-primary" asp-controller="Home" asp-action="Edit" asp-route-applicationid="@x.TaskId">Edit</a></td>
-    <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-applicationid="@x.TaskId">Delete</a></td>
-</tr>            }
+        <td><a class="btn btn-primary" asp-controller="Home" asp-action="Edit" asp-route-taskid="@x.TaskId">Edit</a></td>
+        <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-taskid="@x.TaskId">Delete</a></td>
+    </tr>
+       }
         </tbody>
 
     </table>

@@ -1,89 +1,74 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
+﻿@{ ViewData["Title"] = "Home Page"; }
+@model List<TaskResponse>
 <style>
-    /* Style for the matrix container */
-    .matrix-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 14px;
+    .vertical-text {
+        writing-mode: vertical-lr; /* sets vertical text from left to right */
+        transform: rotate(-180deg); /* rotates text 180 degrees to make it read from top to bottom */
     }
 
-    /* Style for each quadrant */
-    .quadrant {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 50%;
-        height: 50%;
-        padding: 20px;
+    h3 {
         text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    /* Style for the cell colors */
-    .quadrant-1 {
-        background-color: #fcf8e3;
-    }
-
-    .quadrant-2 {
-        background-color: #dff0d8;
-    }
-
-    .quadrant-3 {
-        background-color: #f2dede;
-    }
-
-    .quadrant-4 {
-        background-color: #d9edf7;
-    }
-
-    /* Style for the text inside each quadrant */
-    .quadrant-text {
-        font-size: 24px;
-        font-weight: bold;
+    .container {
+        text-align: center;
     }
 </style>
 
-<div class="matrix-container">
-    <div class="quadrant quadrant-1">
-        <div class="quadrant-text">Do First</div>
+
+<div class="container">
+    <h3>Stephen Covey's Time Management Matrix</h3>
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-5"><h4>Urgent</h4></div>
+        <div class="col-5"><h4>Not Urgent</h4></div>
+    </div><br />
+    <div class="row">
+        <div class="col-2"><h4 class="vertical-text">Important</h4></div>
+        <div class="col-5">
+            @foreach (var x in Model)
+            {
+                if (x.Completed == false && x.QuadrantId == 1)
+                {
+                    <p>@x.Task</p>
+                }
+
+            }
     </div>
-    <div class="quadrant quadrant-2">
-        <div class="quadrant-text">Schedule</div>
+    <div class="col-5">
+        @foreach (var x in Model)
+        {
+            if (x.Completed == false && x.QuadrantId == 2)
+            {
+<p>@x.Task</p>                }
+
+            }
     </div>
-    <div class="quadrant quadrant-3">
-        <div class="quadrant-text">Delegate</div>
+</div><br /><br />
+<div class="row">
+    <div class="col-2"><h4 class="vertical-text">Not Important</h4></div>
+    <div class="col-5">
+        @foreach (var x in Model)
+        {
+            if (x.Completed == false && x.QuadrantId == 3)
+            {
+<p>@x.Task</p>                }
+
+            }
     </div>
-    <div class="quadrant quadrant-4">
-        <div class="quadrant-text">Eliminate</div>
+    <div class="col-5">
+        @foreach (var x in Model)
+        {
+            if (x.Completed == false && x.QuadrantId == 4)
+            {
+<p>@x.Task</p>                }
+
+            }
     </div>
-    <div class="quadrant quadrant-1">
-        <div class="quadrant-text">Crisis</div>
-    </div>
-    <div class="quadrant quadrant-2">
-        <div class="quadrant-text">Prevention, Planning, Improvement</div>
-    </div>
-    <div class="quadrant quadrant-3">
-        <div class="quadrant-text">Interruptions, Some Calls, Some Emails</div>
-    </div>
-    <div class="quadrant quadrant-4">
-        <div class="quadrant-text">Time Wasters</div>
-    </div>
-    <div class="quadrant quadrant-1">
-        <div class="quadrant-text">Pressing Problems</div>
-    </div>
-    <div class="quadrant quadrant-2">
-        <div class="quadrant-text">Relationship Building, Learning, Recognizing New Opportunities</div>
-    </div>
-    <div class="quadrant quadrant-3">
-        <div class="quadrant-text">Some Meetings, Some Calls, Some Emails</div>
-    </div>
-    <div class="quadrant quadrant-4">
-        <div class="quadrant-text">Escape Activities, Excessive TV, Social Media, Gaming</div>
-    </div>
+
+</div>
+
 </div>
