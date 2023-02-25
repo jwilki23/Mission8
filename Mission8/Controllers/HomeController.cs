@@ -12,12 +12,14 @@ namespace Mission8.Controllers
 {
     public class HomeController : Controller
     {
+
         private AddTaskContext taskContext { get; set; }
 
         //Constructor
         public HomeController(AddTaskContext task)
         {
             taskContext = task;
+
         }
 
         //Method for when you click on index
