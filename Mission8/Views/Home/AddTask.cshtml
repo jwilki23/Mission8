@@ -237,12 +237,12 @@
             <div class="banner">
                 <h1>Add Task</h1>
             </div>
-            <p>Enter the information below for the movie you would like to add</p>
+            <p>Enter the information below for the task you would like to add</p>
 
             <div class="item">
-                <p style="font-weight: bold" asp-for="CategoryId">Category<span>*</span></p>
+                <label style="font-weight: bold" asp-for="CategoryId">Category<span>*</span></label>
                 <select asp-for="Category">
-                    <option value="" disabled selected>Select a Caregory</option>
+                    <option value="" disabled selected>Select a Category</option>
                     @foreach (Category c in ViewBag.Categories)
                     {
                         <option value="@c.CategoryId">@c.CategoryName</option>
@@ -251,8 +251,8 @@
             </div>
 
             <div class="item">
-                <p style="font-weight: bold" asp-for="Quadrant">Quadrant</p>
-                <select asp-for="Quadrant" required>
+                <label style="font-weight: bold" asp-for="Quadrant">Quadrant</label>
+                <select asp-for="Quadrant">
                     <option value="" disabled selected></option>
                     <option value=1>Important / Urgent</option>
                     <option value=2>Important / Not Urgent</option>
@@ -263,7 +263,7 @@
 
             <div class="item">
                 <label for="Task" asp-for="Task">Task<span>*</span></label>
-                <input id="Task" type="text" asp-for="Task" required />
+                <input id="Task" type="text" asp-for="Task"/>
             </div>
 
             <div class="item">
@@ -273,8 +273,8 @@
             </div>
 
             <div class="item">
-                <p style="font-weight: bold" asp-for="Completed">Completed</p>
-                <select asp-for="Completed" required>
+                <label style="font-weight: bold" asp-for="Completed">Completed</label>
+                <select asp-for="Completed">
                     <option value="" disabled selected></option>
                     <option value="True">Yes</option>
                     <option value="False">No</option>
