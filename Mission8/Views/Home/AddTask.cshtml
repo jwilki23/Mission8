@@ -228,7 +228,7 @@
 
 </style>
 
-<div style="margin: auto; width: 50%;">
+<div style="margin: auto; width: 50%; margin-top: -50px;">
     <div class="testbox" style="">
         <form method="post">
 
@@ -237,10 +237,12 @@
             <div class="banner">
                 <h1>Add Task</h1>
             </div>
-            <p>Enter the information below for the movie you would like to add</p>
+            <p>Enter the information below for the task you would like to add</p>
 
             <div class="item">
+
                 <label style="font-weight: bold" asp-for="CategoryId">Category<span>*</span></label>
+
                 <select asp-for="CategoryId">
                     <option value="" disabled selected>Select a Category</option>
                     @foreach (Category c in ViewBag.Categories)
@@ -251,6 +253,7 @@
             </div>
 
             <div class="item">
+
                 <label style="font-weight: bold" asp-for="Quadrant">Quadrant</label>
                 <select asp-for="QuadrantId" required>
                     <option value="" disabled selected></option>
@@ -263,7 +266,7 @@
 
             <div class="item">
                 <label for="Task" asp-for="Task">Task<span>*</span></label>
-                <input id="Task" type="text" asp-for="Task" required />
+                <input id="Task" type="text" asp-for="Task"/>
             </div>
 
             <div class="item">
@@ -273,7 +276,7 @@
 
             <div class="item">
                 <label style="font-weight: bold" asp-for="Completed">Completed</label>
-                <select asp-for="Completed" required>
+                <select asp-for="Completed">
                     <option value="" disabled selected></option>
                     <option value="True">Yes</option>
                     <option value="False">No</option>

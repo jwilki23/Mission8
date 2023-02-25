@@ -99,7 +99,7 @@ namespace Mission8.Controllers
             {
                 taskContext.Update(blah);
                 taskContext.SaveChanges();
-                return View("Tasks", blah);
+                return View("Index", blah);
             }
             //otherwise returns them back to the page they were on
             else
